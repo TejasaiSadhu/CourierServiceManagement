@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#main-container {
+  width: 800px;
+  margin: 0 auto;
+}
+#frm{
+	margin: 0 auto;
+}
+#tbl{
+	margin: 0 auto;
+}

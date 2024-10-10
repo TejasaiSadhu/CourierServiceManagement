@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Placing Order</title>
+    
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"></link>
+ 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"></link>
+
+    
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all"></link>
+
+    <link href="css/main.css" rel="stylesheet" media="all"></link>
+    
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'></link>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	
+	<link rel="stylesheet" href="navbarcss/style.css"></link>
+  </h:head>
+    
+  <h:body>
+    
+    <h:messages globalOnly="true" />
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+	        	<li class="nav-item active"><a href="/CourierWebService/BranchOperatorHome.jsf" class="nav-link">Home</a></li>
+	        	<li class="nav-item dropdown">
+              
+	        	<li class="nav-item"><a href="/CourierWebService/placeorder.jsf" class="nav-link">Place an order</a></li>
+	        	<li class="nav-item"><a href="/CourierWebService/vieworders.jsf" class="nav-link">View All Orders</a></li>
+	        	<li class="nav-item"><a href="/CourierWebService/UpdateOrder.jsf" class="nav-link">Update Order</a></li>
+	          
+	           <li class="nav-item"><a href="/CourierWebService/DeleteOrder.jsf" class="nav-link">Delete Order</a></li>
+	            <li class="nav-item"><a href="/CourierWebService/faces/ordertracking.jsp" class="nav-link">Track Order</a></li>
+	             <li class="nav-item"><a href="/CourierWebService/faces/BranchOperatorLogin.jsp" class="nav-link">Log out</a></li></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    
+
+    
+   <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Order Details Form</h2>
+                </div>
+                <h3>Product Details</h3>
+                <h:form>
+                
+                <div class="form-row m-b-55">
+                            <div class="name">Dimensions</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" value="#{ordBean.prolength}" id="length" /> 
+                                            <label class="label--desc">Length</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.proheight}" id="height" />
+                                            <label class="label--desc">Height</label>
+                                            
+                                        </div>
+                                    </div>
+                                     <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5"  value="#{ordBean.prowidth}" id="width" /> 
+                                            <label class="label--desc">Width</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Details</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                   
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.proweight}" id="weight" />
+                                            <label class="label--desc">Weight</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.ordvalue}" id="value" />
+                                            <label class="label--desc">Value</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+               
+                        
+                        <div class="form-row m-b-55">
+                            <div class="name">Location</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <h:selectOneMenu value="#{ordBean.ordfromplace}" class="input--style-5">
+                <f:selectItems value="#{ordBean.fromplaceValue}" var="c"   
+                    itemLabel="#{c.branchName}" itemValue="#{c.branchCode}" />
+            </h:selectOneMenu>
+            <label class="label--desc">From Place</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                        <h:selectOneMenu value="#{ordBean.ordtoplace}" class="input--style-5">
+                <f:selectItems value="#{ordBean.fromplaceValue}" var="c"
+                    itemLabel="#{c.branchName}" itemValue="#{c.branchCode}" />
+            </h:selectOneMenu>
+                                              <input type="hidden" name="hidden1" value="vskp" />
+            <label class="label--desc">To Place</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       <div class="form-row m-b-55">
+                            <div class="name">Address </div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                   
+                                    <div class="col-5">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.ordrecieverdetails}" id="receiverDetails" />
+                                            <label class="label--desc">Receiver Address</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.ordsenderdetails}" id="senderDetails" />
+                                            <label class="label--desc">Sender Address</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Contact</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" value="#{ordBean.ordemail}" id="Email" /> 
+                                            <label class="label--desc">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                             <h:inputText class="input--style-5"  value="#{ordBean.ordphonenum}" id="PhnNum" />
+                                            <label class="label--desc">Phone Number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                     
+                        
+                        
+                        
+                        
+                       
+                         <h:commandButton class="btn btn--radius-2 btn--green"  value="Save" action="#{ordBean.insertord()}"/>
+                    
+                    </h:form>
+                    <br/>
+    <h:outputText style="color:green" value="#{ordBean.response}"></h:outputText>
+    
+    <br/>
+                </div>
+            </div>
+        </div>
+   
+   
+    
+    
+    
+    
+  </h:body>
+</html>

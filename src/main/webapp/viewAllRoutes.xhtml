@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="indexStyle.css" media="all" />
+<link rel="stylesheet" type="text/css" href="AdminNavbar.css" media="all" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'></link>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+  
+  <link rel="stylesheet" href="Admincss/style.css"></link>
+    <title>Admin Home</title>
+    <style type="text/css">
+</style>
+  </h:head>
+    
+  <h:body>
+   <div class="container">
+      <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+          <a class="navbar-brand" href="">Logo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto mr-md-3">
+              <li class="nav-item active"><a href="AdminHome.jsf" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="AddBranch.jsf" class="nav-link">Add Branch</a></li>
+              <li class="nav-item"><a href="AddRoute.jsf" class="nav-link">Add route</a></li>
+              <li class="nav-item"><a href="ViewAllBranches.jsf" class="nav-link">View branches</a></li>
+               <li class="nav-item"><a href="ViewAllBranchOperators.jsf" class="nav-link">View branch operator</a></li>       
+              <li class="nav-item"><a href="viewAllRoutes.jsf" class="nav-link">View routes</a></li>
+              <li class="nav-item"><a href="UpdateRoutes.jsf" class="nav-link">update routes</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- END nav -->
+  </div>
+    
+    <h3 align="center">View All Routes</h3>
+    
+    
+    <h:dataTable value="#{rotBean.routeList}" var="row" align ="center">
+
+    <h:column>
+        <f:facet name="header">RouteID</f:facet>
+           #{row.routeid}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Route From</f:facet>
+           #{row.routefromPlace}
+    </h:column>
+   
+   <h:column>
+        <f:facet name="header">Route To</f:facet>
+           #{row.routetoPlace}
+    </h:column>
+    
+    <h:column>
+        <f:facet name="header">Route Distance</f:facet>
+           #{row.routeDistance}
+    </h:column>
+    
+    <h:column>
+        <f:facet name="header">ETD</f:facet>
+           #{row.routeEstimatedDays}
+    </h:column>
+    
+    </h:dataTable>
+      
+   
+  </h:body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<link rel="stylesheet" type="text/css" href="indexStyle.css" media="all" />
+    <title>Order CRUD Operations</title>
+    <style type="text/css">
+</style>
+  </h:head>
+    
+  <h:body>
+     <div id="main-container">
+    <h:messages globalOnly="true" />
+    
+    <h3 align ="center">Add Order</h3>
+    <hr/>
+      <h:form id="frm">
+     
+       
+                
+            
+          <h:outputLabel align ="center">Order Id</h:outputLabel>
+          <h:inputText value="#{ordBean.oid}" id="id" />
+          <br/>
+          <h:outputLabel>Order Status</h:outputLabel>
+          <h:inputText value="#{ordBean.ostatus}" id="name" />
+          <br/>    
+          <h:outputLabel>Order Amount</h:outputLabel>
+          <h:inputText value="#{ordBean.oamount}" id="amount" />
+          <br/>
+                 
+          <h:commandButton value="Save" action="#{ordBean.insertord()}"/>
+          <h:commandButton value="Update" action="#{ordBean.updateord()}"/>
+          <h:commandButton value="Delete" action="#{ordBean.deleteord()}"/>
+          
+       
+      </h:form>
+      
+    <br/>
+    <h:outputText style="color:red" value="#{ordBean.response}" id="tbl"></h:outputText>
+    
+    <br/>
+    
+    <h3 align="center">View All Orders</h3>
+    
+    
+    <h:dataTable value="#{ordBean.ordlist}" var="row" align ="center">
+
+    <h:column>
+        <f:facet name="header">Ord ID</f:facet>
+           #{row.orderid}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Ord Status</f:facet>
+           #{row.status}
+    </h:column>
+   
+   <h:column>
+        <f:facet name="header">Ord Amount</f:facet>
+           #{row.amount}
+    </h:column>
+    
+    </h:dataTable>
+    </div>
+  </h:body>
+</html>
